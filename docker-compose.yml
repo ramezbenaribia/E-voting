@@ -1,0 +1,25 @@
+version: "3.4"
+services:
+  ganache:
+    image: ramezbenaribia/ganache
+    container_name: ganache
+    ports:
+      - "8545:8545"
+      - "7545:7545"
+  truffle:
+    image: ramezbenaribia/truffle
+    container_name: truffle
+    command: /bin/sh
+    stdin_open: true
+    tty: true
+    ports:
+      - "8080:8080"
+      - "3000:3000"
+      - "3001:3001"
+    volumes:
+      - ./:/code
+  interface:
+    image: ramezbenaribia/ganache-cli-interface
+    container_name: interface
+    ports:
+      - "5051:5051"
